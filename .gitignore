@@ -1,3 +1,4 @@
+*.csv
 .vscode/
 data/
 
@@ -16,7 +17,7 @@ __pycache__/
 build/
 develop-eggs/
 dist/
-downloads/
+downloads/event_datafile_new.csv
 eggs/
 .eggs/
 lib/
