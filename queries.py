@@ -35,9 +35,10 @@ song_library = """
 CREATE TABLE IF NOT EXISTS song_library
 (
     song_title text,
+    user_id int,
     user_last_name text,
     user_first_name text,
-    PRIMARY KEY (song_title, user_last_name, user_first_name)
+    PRIMARY KEY (song_title, user_id)
 )
 """
 
@@ -54,8 +55,8 @@ user_lib_insert = """
 INSERT INTO user_library
 (
     user_id,
-    item_in_session,
     session_id,
+    item_in_session,
     artist_name,
     song_title,
     user_first_name,
@@ -67,9 +68,9 @@ VALUES
 
 song_lib_insert = """
 INSERT INTO song_library
-(song_title, user_last_name, user_first_name)
+(song_title, user_id, user_last_name, user_first_name)
 VALUES
-(%s, %s, %s)
+(%s, %s, %s, %s)
 """
 
 # Create queries to ask the following three questions of the data
