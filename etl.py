@@ -62,8 +62,8 @@ def get_table_col_idxs(df):
 
     user_cols =  [
         'user_id',
-        'item_in_session',
         'session_id',
+        'item_in_session',
         'artist_name',
         'song_title',
         'user_first_name',
@@ -73,6 +73,7 @@ def get_table_col_idxs(df):
 
     song_cols = [
         'song_title',
+        'user_id',
         'user_last_name',
         'user_first_name'
     ]
