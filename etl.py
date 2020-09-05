@@ -129,6 +129,12 @@ def insert_data(session):
             stmt_count = 0
 
 def show_select_results(session):
+    """
+    Run the SELECT queries against the project tables and display the results.
+
+    arguments:
+    session - the Session object used to execute the KEYSPACE creation statement
+    """
     for tab in queries:
         print(f'SELECT FROM {tab}')
         try:
