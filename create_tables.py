@@ -30,6 +30,16 @@ def create_keyspace(session, keyspace):
     except Exception as e:
         print(e)
 
+def drop_tables(session):
+    """
+    Drops all of the database tables.
+    """
+    for tab in ['session_library', 'song_library', 'user_library']:
+        try:
+            session.execute(f'DROP TABLE IF EXISTS {tab}')
+        except Exception as e:
+            print(e)
+
 def create_tables(session):
     """
     Create all tables for the project.
@@ -38,7 +48,10 @@ def create_tables(session):
     session - the Session object used to execute the KEYSPACE creation statement
     """
     for lib in create_tables_stmts:
-        print(lib)
+        try:
+            session.execute(lib)
+        except Exception as e:
+            print(e)
 
 def main():
     project_keyspace = 'sparkify'
@@ -46,7 +59,9 @@ def main():
     try:
         create_keyspace(session, project_keyspace)
         session.set_keyspace(project_keyspace)
-        create_tables(None)
+        # drop the tables for a clean start
+        drop_tables(session)
+        create_tables(session)
     except Exception as e:
         print(e)
     finally:
